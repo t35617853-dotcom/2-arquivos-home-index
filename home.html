@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYLAX HOME</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background: radial-gradient(circle at center, #05050f, #000);
+color:white;
+overflow:hidden;
+}
+
+/* NAV */
+header{
+display:flex;
+justify-content:space-between;
+padding:25px 40px;
+}
+
+.logo{
+color:#b84cff;
+letter-spacing:3px;
+font-weight:600;
+text-shadow:0 0 10px #b84cff;
+}
+
+nav a{
+color:#777;
+margin-left:30px;
+text-decoration:none;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#fff;
+}
+
+.active{
+color:#b84cff;
+border-bottom:2px solid #b84cff;
+padding-bottom:5px;
+}
+
+/* CONTAINER */
+.container{
+text-align:center;
+margin-top:120px;
+}
+
+/* TITLE */
+h1{
+font-size:42px;
+}
+
+h1 span{
+color:#b84cff;
+text-shadow:0 0 15px #b84cff;
+}
+
+/* TEXT */
+p{
+margin-top:10px;
+color:#aaa;
+}
+
+/* STATS */
+.stats{
+display:flex;
+justify-content:center;
+gap:60px;
+margin-top:90px;
+}
+
+.stat{
+text-align:center;
+transition:0.3s;
+}
+
+.stat:hover{
+transform:translateY(-5px);
+}
+
+.stat h2{
+font-size:32px;
+color:#fff;
+text-shadow:0 0 10px rgba(184,76,255,0.6);
+}
+
+.stat p{
+font-size:12px;
+color:#888;
+letter-spacing:1px;
+}
+
+/* PARTICLES */
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+<div class="logo">SYLAX</div>
+<nav>
+<a class="active" href="home.html">HOME</a>
+<a href="index.html">GET KEY</a>
+</nav>
+</header>
+
+<div class="container">
+
+<h1>What is <span>SYLAX?</span></h1>
+<p>SYLAX is a powerful script hub with a secure key system.</p>
+
+<div class="stats">
+
+<div class="stat">
+<h2>1</h2>
+<p>GAME(S)</p>
+</div>
+
+<div class="stat">
+<h2>24/7</h2>
+<p>UPTIME</p>
+</div>
+
+<div class="stat">
+<h2>FREE</h2>
+<p>KEY SYSTEM</p>
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+/* PARTICLES */
+const canvas = document.getElementById("bg");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let particles = [];
+
+for(let i=0;i<100;i++){
+particles.push({
+x: Math.random()*canvas.width,
+y: Math.random()*canvas.height,
+r: Math.random()*2,
+dx:(Math.random()-0.5)*0.6,
+dy:(Math.random()-0.5)*0.6
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.x+=p.dx;
+p.y+=p.dy;
+
+if(p.x<0||p.x>canvas.width) p.dx*=-1;
+if(p.y<0||p.y>canvas.height) p.dy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="#b84cff";
+ctx.fill();
+});
+
+requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+
+</body>
+</html>

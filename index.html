@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SYLAX KEY</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background: radial-gradient(circle at center, #05050f, #000);
+color:white;
+overflow-x:hidden;
+}
+
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 40px;
+}
+
+.logo-container{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
+.logo-img{
+width:35px;
+height:35px;
+object-fit:contain;
+filter: drop-shadow(0 0 8px #b84cff);
+}
+
+.logo-text{
+color:#b84cff;
+font-weight:600;
+letter-spacing:2px;
+text-shadow:0 0 10px #b84cff;
+}
+
+nav a{
+color:#777;
+margin-left:30px;
+text-decoration:none;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#fff;
+}
+
+.active{
+color:#b84cff;
+border-bottom:2px solid #b84cff;
+padding-bottom:5px;
+}
+
+.container{
+text-align:center;
+margin-top:80px;
+}
+
+.main-logo{
+width:180px;
+margin-bottom:20px;
+filter: drop-shadow(0 0 25px #b84cff);
+animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
+}
+
+@keyframes float{
+0%{transform:translateY(0px);}
+50%{transform:translateY(-12px);}
+100%{transform:translateY(0px);}
+}
+
+@keyframes glow{
+from{filter: drop-shadow(0 0 15px #b84cff);}
+to{filter: drop-shadow(0 0 35px #ff00ff);}
+}
+
+h1{
+font-size:38px;
+margin-bottom:20px;
+}
+
+h1 span{
+color:#b84cff;
+text-shadow:0 0 10px #b84cff;
+}
+
+.box{
+display:flex;
+align-items:center;
+background: rgba(255,255,255,0.03);
+border:1px solid rgba(184,76,255,0.2);
+padding:20px;
+margin:10px auto;
+width:80%;
+max-width:700px;
+border-radius:10px;
+transition:0.3s;
+backdrop-filter:blur(5px);
+}
+
+.box:hover{
+transform:translateY(-5px);
+border:1px solid #b84cff;
+box-shadow:0 0 20px rgba(184,76,255,0.3);
+}
+
+.number{
+background:rgba(184,76,255,0.2);
+color:#b84cff;
+padding:10px 15px;
+border-radius:6px;
+margin-right:20px;
+font-weight:600;
+}
+
+button{
+margin-top:40px;
+padding:15px 70px;
+border:none;
+border-radius:8px;
+font-size:16px;
+background:linear-gradient(45deg,#7a00ff,#d24cff);
+color:white;
+cursor:pointer;
+transition:0.3s;
+box-shadow:0 0 25px rgba(184,76,255,0.6);
+}
+
+button:hover{
+transform:scale(1.08);
+box-shadow:0 0 40px rgba(184,76,255,1);
+}
+
+#keyBox{
+margin-top:25px;
+animation:fade 0.5s ease;
+}
+
+@keyframes fade{
+from{opacity:0;transform:translateY(10px);}
+to{opacity:1;transform:translateY(0);}
+}
+
+input{
+padding:12px;
+width:65%;
+border-radius:6px;
+border:none;
+text-align:center;
+background:#0a0a1a;
+color:#b84cff;
+font-size:14px;
+}
+
+canvas{
+position:fixed;
+top:0;
+left:0;
+z-index:-1;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="bg"></canvas>
+
+<header>
+<div class="logo-container">
+  <img src="SYLAX.png" class="logo-img">
+  <div class="logo-text">SYLAX</div>
+</div>
+
+<nav>
+<a href="home.html">HOME</a>
+<a class="active" href="index.html">GET KEY</a>
+</nav>
+</header>
+
+<div class="container">
+
+<img src="SYLAX.png" class="main-logo">
+
+<h1>Get Your <span>Key</span></h1>
+
+<div class="box">
+<div class="number">01</div>
+<div>Access the SYLAX Key System</div>
+</div>
+
+<div class="box">
+<div class="number">02</div>
+<div>Complete the Verification Checkpoint</div>
+</div>
+
+<div class="box">
+<div class="number">03</div>
+<div>Copy Your Key and Use in SYLAX Hub</div>
+</div>
+
+<button onclick="startKeyProcess()">GET KEY →</button>
+
+<div id="keyBox" style="display:none;">
+<p>Your Key:</p>
+<input id="keyInput" readonly>
+</div>
+
+</div>
+
+<script>
+
+const API = "https://sylax-key.onrender.com";
+
+function startKeyProcess(){
+    window.location.href = "https://linkvertise.com/YOUR_LINK";
+}
+
+async function generateKey(){
+    try{
+        let res = await fetch(API + "/getkey");
+        let data = await res.json();
+
+        document.getElementById("keyBox").style.display="block";
+        document.getElementById("keyInput").value=data.key;
+
+        navigator.clipboard.writeText(data.key);
+
+        alert("Key gerada e copiada!");
+    } catch(err){
+        alert("Erro ao conectar com o servidor!");
+    }
+}
+
+const params = new URLSearchParams(window.location.search);
+if(params.get("getkey") === "true"){
+    generateKey();
+}
+
+/* particles (mesmo código) */
+const canvas=document.getElementById("bg");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+let particles=[];
+
+for(let i=0;i<100;i++){
+particles.push({
+x:Math.random()*canvas.width,
+y:Math.random()*canvas.height,
+r:Math.random()*2,
+dx:(Math.random()-0.5)*0.6,
+dy:(Math.random()-0.5)*0.6
+});
+}
+
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+
+particles.forEach(p=>{
+p.x+=p.dx;
+p.y+=p.dy;
+
+if(p.x<0||p.x>canvas.width)p.dx*=-1;
+if(p.y<0||p.y>canvas.height)p.dy*=-1;
+
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+ctx.fillStyle="#b84cff";
+ctx.fill();
+});
+
+requestAnimationFrame(animate);
+}
+
+animate();
+
+</script>
+
+</body>
+</html>
