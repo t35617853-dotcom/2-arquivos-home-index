@@ -28,24 +28,13 @@ align-items:center;
 padding:25px 40px;
 }
 
-.logo-container{
-display:flex;
-align-items:center;
-gap:10px;
-}
-
-.logo-img{
-width:35px;
-height:35px;
-object-fit:contain;
-filter: drop-shadow(0 0 8px #b84cff);
-}
-
+/* 🔥 REMOVEU A IMAGEM DO CANTO */
 .logo-text{
 color:#b84cff;
 font-weight:600;
 letter-spacing:2px;
 text-shadow:0 0 10px #b84cff;
+font-size:20px;
 }
 
 nav a{
@@ -180,10 +169,8 @@ z-index:-1;
 <canvas id="bg"></canvas>
 
 <header>
-<div class="logo-container">
-  <img src="SYLAX.png" class="logo-img">
-  <div class="logo-text">SYLAX</div>
-</div>
+<!-- 🔥 AGORA SÓ TEXTO -->
+<div class="logo-text">SYLAX</div>
 
 <nav>
 <a href="home.html">HOME</a>
@@ -193,7 +180,8 @@ z-index:-1;
 
 <div class="container">
 
-<img src="SYLAX.png" class="main-logo">
+<!-- 🔥 ÚNICA IMAGEM AGORA -->
+<img src="https://i.imgur.com/TQE2qf2.png" class="main-logo">
 
 <h1>Get Your <span>Key</span></h1>
 
@@ -250,7 +238,7 @@ if(params.get("getkey") === "true"){
     generateKey();
 }
 
-/* particles (mesmo código) */
+/* particles */
 const canvas=document.getElementById("bg");
 const ctx=canvas.getContext("2d");
 
