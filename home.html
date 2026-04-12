@@ -8,7 +8,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-
 *{
 margin:0;
 padding:0;
@@ -34,6 +33,7 @@ color:#b84cff;
 letter-spacing:3px;
 font-weight:600;
 text-shadow:0 0 10px #b84cff;
+cursor:pointer; /* 🔥 AGORA CLICÁVEL */
 }
 
 nav a{
@@ -111,7 +111,6 @@ top:0;
 left:0;
 z-index:-1;
 }
-
 </style>
 </head>
 
@@ -120,11 +119,15 @@ z-index:-1;
 <canvas id="bg"></canvas>
 
 <header>
-<div class="logo">SYLAX</div>
+
+<!-- 🔥 LOGO AGORA LEVA PRO HOME -->
+<div class="logo" onclick="window.location.href='home.html'">SYLAX</div>
+
 <nav>
 <a class="active" href="home.html">HOME</a>
 <a href="index.html">GET KEY</a>
 </nav>
+
 </header>
 
 <div class="container">
