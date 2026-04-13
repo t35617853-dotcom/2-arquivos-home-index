@@ -28,13 +28,17 @@ align-items:center;
 padding:25px 40px;
 }
 
-/* 🔥 REMOVEU A IMAGEM DO CANTO */
+.logo-container{
+display:flex;
+align-items:center;
+gap:10px;
+}
+
 .logo-text{
 color:#b84cff;
 font-weight:600;
 letter-spacing:2px;
 text-shadow:0 0 10px #b84cff;
-font-size:20px;
 }
 
 nav a{
@@ -59,17 +63,18 @@ text-align:center;
 margin-top:80px;
 }
 
+/* 🔥 GIRO PRO LADO (CORRETO) */
+@keyframes spinLogo{
+0%{transform:rotateY(0deg);}
+100%{transform:rotateY(360deg);}
+}
+
 .main-logo{
 width:180px;
 margin-bottom:20px;
 filter: drop-shadow(0 0 25px #b84cff);
-animation: float 3s ease-in-out infinite, glow 2s ease-in-out infinite alternate;
-}
-
-@keyframes float{
-0%{transform:translateY(0px);}
-50%{transform:translateY(-12px);}
-100%{transform:translateY(0px);}
+animation: spinLogo 4s linear infinite, glow 2s ease-in-out infinite alternate;
+transform-style: preserve-3d;
 }
 
 @keyframes glow{
@@ -169,8 +174,9 @@ z-index:-1;
 <canvas id="bg"></canvas>
 
 <header>
-<!-- 🔥 AGORA SÓ TEXTO -->
-<div class="logo-text">SYLAX</div>
+<div class="logo-container">
+  <div class="logo-text">SYLAX</div>
+</div>
 
 <nav>
 <a href="home.html">HOME</a>
@@ -180,8 +186,7 @@ z-index:-1;
 
 <div class="container">
 
-<!-- 🔥 ÚNICA IMAGEM AGORA -->
-<img src="https://i.imgur.com/TQE2qf2.png" class="main-logo">
+<img src="https://i.imgur.com/uV86DAQ.png" class="main-logo">
 
 <h1>Get Your <span>Key</span></h1>
 
@@ -214,7 +219,7 @@ z-index:-1;
 const API = "https://sylax-key.onrender.com";
 
 function startKeyProcess(){
-    window.location.href = "https://linkvertise.com/YOUR_LINK";
+    window.location.href = "https://link-target.net/4792489/8eGmoczMQZ8h";
 }
 
 async function generateKey(){
